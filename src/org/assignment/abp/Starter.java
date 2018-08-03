@@ -45,6 +45,7 @@ public class Starter {
 		}
 		// closing the file after reading it entirely
 		writer.closeWriting();
+		writer.writeAtBegining(String.valueOf(set.size()));
 		System.out.println("File got written at "+ System.getProperty("user.home") + File.separator + "Desktop" + File.separator + outputFile);
 		System.out.println("Time consumed by code " + ((System.currentTimeMillis() - startTime)/1000) + " seconds");
 		bufferedReader.close();

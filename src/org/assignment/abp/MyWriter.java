@@ -3,6 +3,7 @@ package org.assignment.abp;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.RandomAccessFile;
 
 // class for writing the data into the specified file
 public class MyWriter {
@@ -24,6 +25,7 @@ public class MyWriter {
 	public void openFile() throws IOException {
 			file.createNewFile();
 			writer = new PrintWriter(finalFileName, "UTF-8");
+			writer.println("      ");
 	}
 	
 	// Writing specific lines one after the other
@@ -35,5 +37,13 @@ public class MyWriter {
 	public void closeWriting() {
 		writer.flush();
 		writer.close();
+	}
+	
+	// method for writing data on the top of the file
+	public void writeAtBegining(String size) throws IOException {
+		RandomAccessFile f = new RandomAccessFile(new File(finalFileName), "rw");
+		f.seek(0); // to the beginning
+		f.write((size +" \n").getBytes());
+		f.close();
 	}
 }
